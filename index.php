@@ -1,8 +1,40 @@
 <?php 
 
 
-echo "Add base";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "PgConnect";
+// Création de la connexion avec la base de donnée
 
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=PgConnect", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+  } catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+  }
+
+
+// Création de la table
+$sql = "CREATE TABLE MyGuests (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nom VARCHAR(30) NOT NULL,
+prenom VARCHAR(30) NOT NULL,
+motDePasse VARCHAR(50),
+confirmePasse VARCHAR(50),
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+try {
+if ($conn->query($sql) === TRUE) {
+  echo "Table MyGuests created successfully";
+} 
+}
+ catch(PDOException $e) {
+  echo "Error creating table: " . $e->getMessage();
+}
 
 ?>
 <!DOCTYPE html>
