@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Connection failed: " . $e->getMessage();
     }
 
-    // Création de la table (à ne faire qu'une seule fois)
+    // Création de la table 
     $sql = "CREATE TABLE IF NOT EXISTS Utilisateur (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         nom VARCHAR(30) NOT NULL,
@@ -40,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         $La_Clef = "password";
-        // Utilisation de AES_ENCRYPT() pour hacher le mot de passe
         $sql = "
             INSERT INTO Utilisateur (nom, prenom, motDePasse, confirmePasse)
             VALUES(:nom, :prenom, AES_ENCRYPT(:motDePasse, '$La_Clef'), :confirmePasse)";
@@ -57,9 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['motDePasse'] = $motDePasse;
         //$_SESSION['motDePasseEncrypte'] = AES_ENCRYPT($motDePasse, $La_Clef);
 
-        // On renvoie l'utilisateur vers la page de remerciement
+        // On renvoie l'utilisateur vers la page accueil
         header("Location: home.php");
-        exit; // Assurez-vous de terminer l'exécution du script ici
+        exit; // Fin du script
     } catch (PDOException $e) {
         echo 'Impossible de traiter les données. Erreur : ' . $e->getMessage();
     }
@@ -112,8 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </label>
                     </div>
                     <div class="btn">
-                        <button type="submit">Inscription</button>
-                        <button type="reset">Annuler</button>
+                        <button class="passFor" type="submit">Inscription</button>
+                        <button class="passRes" type="reset">Annuler</button>
                     </div>
                 </form>
             </div>

@@ -71,3 +71,11 @@ button{
     padding: 8px 15px;
     border-radius: 10px;
 }
+
+.passFor:hover{
+    background: rgb(0, 204, 255);
+}
+
+.passRes:hover{
+    background: rgb(255, 73, 73);
+}

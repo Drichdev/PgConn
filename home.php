@@ -26,7 +26,7 @@ if(isset($_SESSION['motDePasse'])) {
 <body>
     <div class="content">
         <h1>Bienvenue <?php echo $prenom; ?></h1>
-        <h2>Le vrai mot de passe est <?php echo $motDePasse; ?> </h2>
+        <h2>Le vrai mot de passe est <strong id="strbig"> "<?php echo $motDePasse; ?>" </strong> </h2>
     </div>
 </body>
 
