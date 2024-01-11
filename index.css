@@ -21,7 +21,7 @@
 }
 .content{
     width: 500px;
-    height: 600px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
